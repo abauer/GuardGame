@@ -48,13 +48,13 @@ public class CreditsWindow extends BaseWindow {
 		getContentPane().add(tabbedPane);
 		
 		JPanel navalbattlePanel = new JPanel();
-		tabbedPane.addTab("NavalBattle", null, navalbattlePanel, null);
+		tabbedPane.addTab("GuardGame", null, navalbattlePanel, null);
 		navalbattlePanel.setLayout(null);
 		
-		JLabel lblNavalbattle = new JLabel("NavalBattle");
+		JLabel lblNavalbattle = new JLabel("GuardGame");
 		lblNavalbattle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNavalbattle.setFont(new Font("Tahoma", Font.PLAIN, 38));
-		lblNavalbattle.setBounds(111, 11, 197, 46);
+		lblNavalbattle.setBounds(111, 11, 300, 46);
 		navalbattlePanel.add(lblNavalbattle);
 		
 		JLabel lblNBVersion = new JLabel("Version " + Constants.GUARDGAME_VERSION + " (" + Constants.GUARDGAME_CODENAME + ")");

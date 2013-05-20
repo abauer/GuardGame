@@ -37,7 +37,7 @@ public class GuardGame {
 		}));
 		
 		setDefaultLookAndFeel();
-		debugInstance = new Debugger("NavalBattle");
+		debugInstance = new Debugger("GuardGame");
 		debugInstance.registerCommands(Commands.COMMANDS);
 		
 		if(Constants.DEBUG_MODE)
@@ -46,7 +46,7 @@ public class GuardGame {
 		gameState = new GameState();
 		roketGamer = new RoketGamer();
 		
-		getDebugWindow().printInfo("NavalBattle " + Constants.GUARDGAME_VERSION + " initialized");
+		getDebugWindow().printInfo("GuardGame " + Constants.GUARDGAME_VERSION + " initialized");
 		getDebugWindow().printInfo("Successfully loaded GameKit " + GameKit.getVersion() + " (API " + GameKit.getApiLevel() + ")");
 		
 		windowHandler = new WindowHandler(492,340);

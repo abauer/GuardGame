@@ -15,7 +15,7 @@ public class BaseWindow extends com.jpii.gamekit.gui.BaseWindow{
 	}
 	
 	public void setDefaults() {
-		setTitle("NavalBattle");
+		setTitle("GuardGame");
 		addWindowListener(Constants.closer);
 		addKeyListener(Constants.keys);
 		addFocusListener(new Focus(this));

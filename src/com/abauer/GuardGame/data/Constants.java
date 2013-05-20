@@ -28,7 +28,7 @@ public class Constants {
 	 */
 	public static final String GUARDGAME_VERSION = "0.0.1";
 	public static final String VERSION_CODE = "1";
-	public static final String GUARDGAME_CODENAME = "Nimitz";
+	public static final String GUARDGAME_CODENAME = "3s";
 	public static final String GUARDGAME_VERSION_TITLE = "GuardGame " + GUARDGAME_VERSION + " (" + GUARDGAME_CODENAME + ")";
 	public static final String CRITICAL_ERROR_HEADER = "GuardGame encountered a critical error and must close.\n" +
 			"Report the error to: anthonyambauer@gmail.com";

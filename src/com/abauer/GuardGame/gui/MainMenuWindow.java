@@ -72,7 +72,7 @@ public class MainMenuWindow extends BaseWindow {
 		btnCredits.setFocusable(false);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/jpii/navalbattle/res/drawable-gui/menu_background.png")));
+		label.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
 		label.setBounds(-83, -62, 569, 374);
 		getContentPane().add(label);
 

@@ -56,15 +56,12 @@ public class LoggingInWindow extends BaseWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				length += Constants.SPLASH_DURATION;
 				if (currentImage == 0) {
-					label.setIcon(new ImageIcon(FileUtils.getResourcePath(("drawable-gui/jpii_title.png"))));
-				}
-				else if (currentImage == 1) {
-					label.setIcon(new ImageIcon(FileUtils.getResourcePath(("drawable-gui/roketgamer_title.png"))));
+					label.setIcon(new ImageIcon(FileUtils.getResourcePath(("/roketgamer_title.png"))));
 				}
 				else {
-					label.setIcon(new ImageIcon(FileUtils.getResourcePath(("drawable-gui/navalbattle_title.png"))));
+					label.setIcon(new ImageIcon(FileUtils.getResourcePath(("/guardgame_title.png"))));
 				}
-				if (currentImage == 2)
+				if (currentImage == 1)
 					currentImage = 0;
 				else
 					currentImage++;
