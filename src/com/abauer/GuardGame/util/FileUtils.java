@@ -32,7 +32,7 @@ public class FileUtils {
 	 */
 	public static File getSavingDirectory() {
 		if (workDir == null)
-			workDir = getSavingDirectory("navalbattle");
+			workDir = getSavingDirectory("GuardGame");
 		return workDir;
 	}
 	
@@ -78,7 +78,7 @@ public class FileUtils {
 	 * @return
 	 */
 	public static URL getResourcePath(String s){
-		return FileUtils.class.getResource("/com/jpii/navalbattle/res/" + s);
+		return FileUtils.class.getResource("/com/abauer/guardgame/res/" + s);
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class FileUtils {
 	public static BufferedImage getImage(String s){
 		BufferedImage i = null;
 		try {
-			i = ImageIO.read(FileUtils.class.getResource("/com/jpii/navalbattle/res/"+s));
+			i = ImageIO.read(FileUtils.class.getResource("/com/abauer/guardgame/res/"+s));
 		} catch (Throwable e) {
 			System.out.println("Failed to load:" + s + "@" + e.getMessage());
 		}
