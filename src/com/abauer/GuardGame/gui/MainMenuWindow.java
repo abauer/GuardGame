@@ -88,7 +88,7 @@ public class MainMenuWindow extends BaseWindow {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(btnRoketGamer.isEnabled())
-					URLUtils.openURL("http://jpii.github.io/GuardGame/help.html");
+					URLUtils.openURL("http://jpii.github.io/NavalBattle/help.html");
 			}
 		});
 
