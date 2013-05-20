@@ -17,6 +17,10 @@
 
 package com.abauer.GuardGame.data;
 
+import com.abauer.GuardGame.Listeners.KeyboardListener;
+import com.abauer.GuardGame.Listeners.WindowCloser;
+
+
 public class Constants {
 	
 	/*
@@ -31,6 +35,12 @@ public class Constants {
 	
 	public static final boolean DEBUG_MODE = true;
 	
+	public static final int SPLASH_DURATION = 1000;
+	public static final int SPLASH_SCREEN_TIMEOUT = 3000;
+	
+	public static final KeyboardListener keys = new KeyboardListener();
+	public static final WindowCloser closer = new WindowCloser();
+	
 	/*
 	 * Game engine
 	 */
@@ -43,6 +53,7 @@ public class Constants {
 	 * RoketGamer
 	 */
 	public static final String API_KEY = "";
+	public static final RoketGamerLogHook ROKETGAMER_LOG_HOOK = new RoketGamerLogHook();
 	
 	/*
 	 * GameKit

@@ -10,10 +10,10 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import com.abauer.GuardGame.data.Commands;
 import com.abauer.GuardGame.data.Constants;
 import com.abauer.GuardGame.data.GameState;
+import com.abauer.GuardGame.gui.WindowHandler;
 import com.jpii.gamekit.GameKit;
 import com.jpii.gamekit.debug.Debugger;
 import com.jpii.gamekit.exception.InvalidApiLevelException;
-import com.jpii.gamekit.gui.WindowHandler;
 import com.roketgamer.RoketGamer;
 
 public class GuardGame {
