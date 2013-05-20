@@ -23,6 +23,7 @@ import java.awt.event.*;
 import com.abauer.GuardGame.GuardGame;
 import com.abauer.GuardGame.Listeners.Focus;
 import com.abauer.GuardGame.data.Constants;
+import com.abauer.GuardGame.util.URLUtils;
 import com.roketgamer.Player;
 import com.roketgamer.rauth.*;
 
@@ -100,6 +101,7 @@ public class LoginWindow extends BaseWindow {
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {			
 				GuardGame.getDebugWindow().printInfo("Opening register page");
+				URLUtils.openURL(GuardGame.getRoketGamer().getServerLocation() + "/register.php?game=1&name=GuardGame");
 			}
 		});
 	}

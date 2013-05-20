@@ -22,6 +22,7 @@ import javax.swing.*;
 import com.abauer.GuardGame.GuardGame;
 import com.abauer.GuardGame.Listeners.WindowCloser;
 import com.abauer.GuardGame.data.Constants;
+import com.abauer.GuardGame.util.URLUtils;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -86,7 +87,8 @@ public class MainMenuWindow extends BaseWindow {
 		btnRoketGamer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				if(btnRoketGamer.isEnabled())
+					URLUtils.openURL("http://jpii.github.io/GuardGame/help.html");
 			}
 		});
 
