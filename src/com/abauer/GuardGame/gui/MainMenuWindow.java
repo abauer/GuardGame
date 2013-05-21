@@ -56,15 +56,39 @@ public class MainMenuWindow extends BaseWindow {
 		tabbedPane.setBounds(0, 0, 492, 250);
 		getContentPane().add(tabbedPane);
 		
-		JPanel currentGamesPanel = new JPanel();
-		tabbedPane.addTab("New Game", null, currentGamesPanel, null);
-		currentGamesPanel.setLayout(null);
+		JPanel newGames = new JPanel();
+		tabbedPane.addTab("New Game", null, newGames, null);
+		newGames.setLayout(null);
 		
-		JButton vAI = new JButton();
+		JButton vAI = new JButton("2 Player Game with AI");
+		vAI.setBounds(43, 10, 160, 30);
+		newGames.add(vAI);
+		vAI.setFocusable(false);
 		
-		JPanel gamekitPanel = new JPanel();
-		tabbedPane.addTab("Game History", null, gamekitPanel, null);
-		gamekitPanel.setLayout(null);
+		JButton v2AI = new JButton("3 Player Game with AI's");
+		v2AI.setBounds(43, 50, 160, 30);
+		newGames.add(v2AI);
+		v2AI.setFocusable(false);
+		
+		JButton lan2 = new JButton("2 Player LAN Game");
+		lan2.setBounds(43, 90, 160, 30);
+		newGames.add(lan2);
+		lan2.setFocusable(false);
+		
+		JButton lan3ai = new JButton("3 Player LAN Game one AI");
+		lan3ai.setFont(new Font("SansSerif",Font.PLAIN,10));
+		lan3ai.setBounds(43, 130, 160, 30);
+		newGames.add(lan3ai);
+		lan3ai.setFocusable(false);
+		
+		JButton lan3 = new JButton("3 Player LAN Game");
+		lan3.setBounds(43, 170, 160, 30);
+		newGames.add(lan3);
+		lan3.setFocusable(false);
+		
+		JPanel history = new JPanel();
+		tabbedPane.addTab("Game History", null, history, null);
+		history.setLayout(null);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
