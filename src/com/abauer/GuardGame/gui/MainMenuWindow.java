@@ -86,6 +86,28 @@ public class MainMenuWindow extends BaseWindow {
 		newGames.add(lan3);
 		lan3.setFocusable(false);
 		
+		JButton on2 = new JButton("2 Player Online Game");
+		on2.setBounds(289, 30, 160, 30);
+		newGames.add(on2);
+		on2.setFocusable(false);
+		
+		JButton on3 = new JButton("3 Player Online Game");
+		on3.setBounds(289, 90, 160, 30);
+		newGames.add(on3);
+		on3.setFocusable(false);
+		
+		JButton on2ai = new JButton("3 Player Online one AI");
+		on2ai.setBounds(289, 150, 160, 30);
+		newGames.add(on2ai);
+		on2ai.setFocusable(false);
+		
+		if(GuardGame.getGameState().isOffline()){
+			btnRoketGamer.setEnabled(false);
+			on2.setEnabled(false);
+			on3.setEnabled(false);
+			on2ai.setEnabled(false);
+		}
+		
 		JPanel history = new JPanel();
 		tabbedPane.addTab("Game History", null, history, null);
 		history.setLayout(null);
@@ -94,9 +116,10 @@ public class MainMenuWindow extends BaseWindow {
 		label.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
 		label.setBounds(-83, -62, 569, 374);
 		getContentPane().add(label);
-		
-		if(GuardGame.getGameState().isOffline())
-			btnRoketGamer.setEnabled(false);
+		JLabel background = new JLabel("");
+		background.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
+		background.setBounds(-83, -62, 569, 374);
+		newGames.add(background);
 		
 		btnRoketGamer.addMouseListener(new MouseAdapter() {
 			@Override
