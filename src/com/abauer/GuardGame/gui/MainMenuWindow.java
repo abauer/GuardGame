@@ -103,11 +103,15 @@ public class MainMenuWindow extends BaseWindow {
 		newGames.add(on2ai);
 		on2ai.setFocusable(false);
 		
+		lan2.setEnabled(false);
+		lan3.setEnabled(false);
+		lan3ai.setEnabled(false);
+		on2.setEnabled(false);
+		on3.setEnabled(false);
+		on2ai.setEnabled(false);
+		
 		if(GuardGame.getGameState().isOffline()){
 			btnRoketGamer.setEnabled(false);
-			on2.setEnabled(false);
-			on3.setEnabled(false);
-			on2ai.setEnabled(false);
 		}
 		
 		JPanel history = new JPanel();
@@ -124,6 +128,14 @@ public class MainMenuWindow extends BaseWindow {
 		newGames.add(background);
 		
 		vAI.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new GameWindow(new DuoGame(new TurnManager()));
+				nextWindow("GameWindow");
+			}
+		});
+		
+		v2AI.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				new GameWindow(new DuoGame(new TurnManager()));
