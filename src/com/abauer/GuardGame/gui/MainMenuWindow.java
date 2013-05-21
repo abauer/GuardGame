@@ -22,6 +22,8 @@ import javax.swing.*;
 import com.abauer.GuardGame.GuardGame;
 import com.abauer.GuardGame.Listeners.WindowCloser;
 import com.abauer.GuardGame.data.Constants;
+import com.abauer.GuardGame.game.DuoGame;
+import com.abauer.GuardGame.turn.TurnManager;
 import com.abauer.GuardGame.util.URLUtils;
 
 import java.awt.*;
@@ -120,6 +122,14 @@ public class MainMenuWindow extends BaseWindow {
 		background.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
 		background.setBounds(-83, -62, 569, 374);
 		newGames.add(background);
+		
+		vAI.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new GameWindow(new DuoGame(new TurnManager()));
+				nextWindow("GameWindow");
+			}
+		});
 		
 		btnRoketGamer.addMouseListener(new MouseAdapter() {
 			@Override
