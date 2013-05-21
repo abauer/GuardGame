@@ -16,6 +16,7 @@ public class Game extends JComponent implements MouseListener{
 	Graphics main;
 	int width,height;
 	TurnManager tm;
+	private long seed;
 	
 	public Game(TurnManager tm){
 		addMouseListener(this);
@@ -24,6 +25,17 @@ public class Game extends JComponent implements MouseListener{
 		Image board = FileUtils.getImage("tabletexture.jpg");
 		main.drawImage(board,0, 0, 800, 600, null);
 		this.tm = tm;
+		seed = (long) Math.random();
+	}
+	
+	public Game(TurnManager tm, long seed){
+		addMouseListener(this);
+		buffer = new BufferedImage(800,600,BufferedImage.TYPE_4BYTE_ABGR);
+		main = buffer.getGraphics();
+		Image board = FileUtils.getImage("tabletexture.jpg");
+		main.drawImage(board,0, 0, 800, 600, null);
+		this.tm = tm;
+		this.seed = seed;
 	}
 	
 	public BufferedImage getImage() {
