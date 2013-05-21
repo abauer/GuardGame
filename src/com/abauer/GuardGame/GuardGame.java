@@ -50,7 +50,6 @@ public class GuardGame {
 		getDebugWindow().printInfo("Successfully loaded GameKit " + GameKit.getVersion() + " (API " + GameKit.getApiLevel() + ")");
 		
 		windowHandler = new WindowHandler(492,340);
-		((LoginWindow)windowHandler.getFirstWindow()).offlineAction();
 	}
 	
 	public static void onShutdown() {

@@ -36,7 +36,7 @@ public class Constants {
 	public static final boolean DEBUG_MODE = true;
 	
 	public static final int SPLASH_DURATION = 1000;
-	public static final int SPLASH_SCREEN_TIMEOUT = 000;
+	public static final int SPLASH_SCREEN_TIMEOUT = 3000;
 	
 	public static final KeyboardListener keys = new KeyboardListener();
 	public static final WindowCloser closer = new WindowCloser();
