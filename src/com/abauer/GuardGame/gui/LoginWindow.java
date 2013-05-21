@@ -89,12 +89,7 @@ public class LoginWindow extends BaseWindow {
 		
 		offlineButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				GuardGame.getWindowHandler().getToasterManager().showToaster(new ImageIcon(getClass().getResource("/com/roketgamer/res/logo_100px.png")),"Offline mode enabled");
-				GuardGame.getDebugWindow().printInfo("Opening in offline mode");
-				GuardGame.getDebugWindow().printWarning("RoketGamer disabled");
-				GuardGame.getGameState().setOffline(true);
-				nextWindow("LoggingInWindow");
-				donewithMe();
+				offlineAction();
 			}
 		});
 		
@@ -146,5 +141,14 @@ public class LoginWindow extends BaseWindow {
 				JOptionPane.showMessageDialog(this, "Unable to login. Check your internet connection.");
 			}
 		}
+	}
+	
+	public void offlineAction(){
+		GuardGame.getWindowHandler().getToasterManager().showToaster(new ImageIcon(getClass().getResource("/com/roketgamer/res/logo_100px.png")),"Offline mode enabled");
+		GuardGame.getDebugWindow().printInfo("Opening in offline mode");
+		GuardGame.getDebugWindow().printWarning("RoketGamer disabled");
+		GuardGame.getGameState().setOffline(true);
+		nextWindow("LoggingInWindow");
+		donewithMe();
 	}
 }

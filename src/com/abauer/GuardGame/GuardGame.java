@@ -10,7 +10,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import com.abauer.GuardGame.data.Commands;
 import com.abauer.GuardGame.data.Constants;
 import com.abauer.GuardGame.data.GameState;
-import com.abauer.GuardGame.gui.WindowHandler;
+import com.abauer.GuardGame.gui.*;
 import com.jpii.gamekit.GameKit;
 import com.jpii.gamekit.debug.Debugger;
 import com.jpii.gamekit.exception.InvalidApiLevelException;
@@ -50,7 +50,7 @@ public class GuardGame {
 		getDebugWindow().printInfo("Successfully loaded GameKit " + GameKit.getVersion() + " (API " + GameKit.getApiLevel() + ")");
 		
 		windowHandler = new WindowHandler(492,340);
-	
+		((LoginWindow)windowHandler.getFirstWindow()).offlineAction();
 	}
 	
 	public static void onShutdown() {

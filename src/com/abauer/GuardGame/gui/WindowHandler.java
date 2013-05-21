@@ -25,11 +25,11 @@ public class WindowHandler extends com.jpii.gamekit.gui.WindowHandler{
 	
 	public WindowHandler(int defaultx, int defaulty) {
 		super(defaultx, defaulty);
+		toasterManager = new Toaster();
 		new LoginWindow();
 		new LoggingInWindow();
 		new MainMenuWindow();
 		new CreditsWindow();
-		toasterManager = new Toaster();
 	}
 	
 	/**
@@ -38,5 +38,9 @@ public class WindowHandler extends com.jpii.gamekit.gui.WindowHandler{
 	 */
 	public Toaster getToasterManager() {
 		return toasterManager;
+	}
+	
+	public BaseWindow getFirstWindow(){
+		return (BaseWindow) containedWindows.get(0);
 	}
 }

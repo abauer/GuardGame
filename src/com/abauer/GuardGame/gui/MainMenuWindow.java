@@ -19,114 +19,110 @@ package com.abauer.GuardGame.gui;
 
 import javax.swing.*;
 
-import com.abauer.GuardGame.GuardGame;
-import com.abauer.GuardGame.Listeners.WindowCloser;
 import com.abauer.GuardGame.data.Constants;
-import com.abauer.GuardGame.util.URLUtils;
+import com.jpii.gamekit.GameKit;
+import com.roketgamer.RoketGamer;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainMenuWindow extends BaseWindow {
 	private static final long serialVersionUID = 1L;
 	JButton btnRoketGamer;
 
-	/**
-	 * <code>MainMenuWindow</code> constructor.
-	 */
 	public MainMenuWindow() {
-		super();
-
-		getContentPane().setLayout(null);
-
+		
 		JLabel lblVersion = new JLabel(Constants.GUARDGAME_VERSION_TITLE);
 		lblVersion.setForeground(Color.WHITE);
-		JLabel lblNavalBattle = new JLabel("Guard Game");
-		JButton btnSingleplayer = new JButton("Game");
 		btnRoketGamer = new JButton("RoketGamer");
-		JButton btnQuit = new JButton("Quit");
-		JButton btnCredits = new JButton("Credits");
-
-		lblNavalBattle.setBounds(10, 13, 466, 51);
-		lblVersion.setBounds(10, 287, 238, 14);
-		btnSingleplayer.setBounds(194, 74, 100, 30);
-		btnRoketGamer.setBounds(194, 175, 100, 30);
-		btnQuit.setBounds(194, 209, 100, 30);
-		btnCredits.setBounds(375, 267, 100, 30);
-
-		lblNavalBattle.setForeground(Color.WHITE);
-		lblNavalBattle.setFont(new Font("Verdana",Font.BOLD,36));
-		lblNavalBattle.setHorizontalAlignment(SwingConstants.CENTER);
-
-		getContentPane().add(lblVersion);
-		getContentPane().add(lblNavalBattle);
-		getContentPane().add(btnSingleplayer);
-		getContentPane().add(btnRoketGamer);
-		getContentPane().add(btnQuit);
-		getContentPane().add(btnCredits);
-
-		btnSingleplayer.setFocusable(false);
-		btnRoketGamer.setFocusable(false);
-		btnQuit.setFocusable(false);
-		btnCredits.setFocusable(false);
 		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/com/abauer/GuardGame/res/menu_background.png")));
-		label.setBounds(-83, -62, 569, 374);
-		getContentPane().add(label);
+		getContentPane().setLayout(null);
+		JButton btnClose = new JButton("Quit");
+		btnClose.setBounds(10, 261, 90, 30);
+		getContentPane().add(btnClose);
 
-		btnSingleplayer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			
-			}
-		});	
+		btnClose.setFocusable(false);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 476, 250);
+		getContentPane().add(tabbedPane);
+		
+		JPanel navalbattlePanel = new JPanel();
+		tabbedPane.addTab("GuardGame", null, navalbattlePanel, null);
+		navalbattlePanel.setLayout(null);
+		
+		JLabel lblNavalbattle = new JLabel("GuardGame");
+		lblNavalbattle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNavalbattle.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		lblNavalbattle.setBounds(111, 11, 300, 46);
+		navalbattlePanel.add(lblNavalbattle);
+		
+		JLabel lblNBVersion = new JLabel("Version " + Constants.GUARDGAME_VERSION + " (" + Constants.GUARDGAME_CODENAME + ")");
+		lblNBVersion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNBVersion.setBounds(111, 68, 197, 14);
+		navalbattlePanel.add(lblNBVersion);
+		
+		JLabel lblNBLicense = new JLabel("GuradGame is open source under the GNU General Public License v3.");
+		lblNBLicense.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNBLicense.setBounds(10, 187, 409, 14);
+		navalbattlePanel.add(lblNBLicense);
+		
+		JPanel gamekitPanel = new JPanel();
+		tabbedPane.addTab("GameKit", null, gamekitPanel, null);
+		gamekitPanel.setLayout(null);
+		
+		JLabel lblGameKit = new JLabel("GameKit");
+		lblGameKit.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGameKit.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		lblGameKit.setBounds(111, 11, 197, 46);
+		gamekitPanel.add(lblGameKit);
+		
+		JLabel lblGKVersion = new JLabel("Version " + GameKit.getVersion() + " (" + GameKit.getApiLevel() + ")");
+		lblGKVersion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGKVersion.setBounds(111, 68, 197, 14);
+		gamekitPanel.add(lblGKVersion);
+		
+		JLabel lblGKLicense = new JLabel("GameKit is open source under the GNU General Public License v3.");
+		lblGKLicense.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGKLicense.setBounds(10, 187, 409, 14);
+		gamekitPanel.add(lblGKLicense);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("RoketGamer", null, panel, null);
+		panel.setLayout(null);
+		
+		JLabel lblRoketgamer = new JLabel("RoketGamer");
+		lblRoketgamer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRoketgamer.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		lblRoketgamer.setBounds(92, 11, 241, 46);
+		panel.add(lblRoketgamer);
+		
+		JLabel lblRKVersion = new JLabel("Version " + RoketGamer.VERSION);
+		lblRKVersion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRKVersion.setBounds(111, 68, 197, 14);
+		panel.add(lblRKVersion);
+		
+		JLabel lblRGLink = new JLabel("http://www.roketgamer.com");
+		lblRGLink.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRGLink.setBounds(10, 187, 409, 14);
+		panel.add(lblRGLink);
+		
+		JPanel contributorPanel = new JPanel();
+		tabbedPane.addTab("Contributors", null, contributorPanel, null);
+		contributorPanel.setLayout(null);
+		
+		JTextPane contributorsTextPane = new JTextPane();
+		contributorsTextPane.setFont(new Font("Arial", Font.PLAIN, 11));
+		contributorsTextPane.setContentType("text/html");
+		contributorsTextPane.setEditable(false);
+		contributorsTextPane.setBounds(0, 0, 473, 222);
+		contributorPanel.add(contributorsTextPane);
 
-		btnRoketGamer.addMouseListener(new MouseAdapter() {
+		btnClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(btnRoketGamer.isEnabled())
-					URLUtils.openURL("http://jpii.github.io/NavalBattle/help.html");
+				nextWindow("MainMenuWindow");
 			}
 		});
-
-		btnQuit.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				WindowCloser.close();
-			}
-		});
-
-		btnCredits.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				nextWindow("CreditsWindow");
-			}
-		});
-	}
-
-	private static final String PATTERN = 
-			"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
-
-	public static boolean validate(final String ip) {          
-		Pattern pattern = Pattern.compile(PATTERN);
-		Matcher matcher = pattern.matcher(ip);
-		return matcher.matches();             
-	}
-
-	/**
-	 * Set visible.
-	 */
-	public void setVisible(boolean visible){
-		super.setVisible(visible);
-		if(isVisible()){
-			if(GuardGame.getGameState().isOffline()) {
-				btnRoketGamer.setEnabled(false);
-			}
-		}
 	}
 }
