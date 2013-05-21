@@ -44,7 +44,7 @@ public class CreditsWindow extends BaseWindow {
 		btnClose.setFocusable(false);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 476, 250);
+		tabbedPane.setBounds(0, 0, 492, 250);
 		getContentPane().add(tabbedPane);
 		
 		JPanel navalbattlePanel = new JPanel();
