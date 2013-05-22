@@ -137,7 +137,7 @@ public class MainMenuWindow extends BaseWindow {
 		v2AI.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new GameWindow(new TurnManager(new Human(),new AI()));
+				new GameWindow(new TurnManager(new Human(),new AI(),new AI()));
 				nextWindow("GameWindow");
 			}
 		});
