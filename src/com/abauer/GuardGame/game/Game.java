@@ -44,15 +44,11 @@ public class Game extends JComponent implements MouseListener{
 	}
 	
 	protected void drawDeck(){
-		if(cards.getCards().size()>0){
+		for(int index = 0; index<cards.getCards().size();index++){
 			Card temp = cards.getCards().get(0);
 			temp.setVisible(false);
-			temp.drawCard(main, 533, 300);
+			temp.drawCard(main, 540, 300);
 		}
-	}
-	
-	public void dealCards(){
-		
 	}
 	
 	protected void drawPot(){
@@ -68,9 +64,28 @@ public class Game extends JComponent implements MouseListener{
 		}
 	}
 	
+	protected void drawHands(){
+		Card[] shelf = tm.getP1().getShelf();
+		for(int index=0; index<shelf.length; index++){
+			if(shelf[index]!=null){
+				shelf[index].drawCard(main, 50+index*50, 500);
+			}
+		}
+		ArrayList<Card> hand = tm.getP1().getHand();
+		for(int index=0; index<hand.size(); index++){
+			int spaceing = 300/hand.size();
+			hand.get(index).drawCard(main,400+index*spaceing,500);
+		}
+	}
+	
+	public Deck getDeck(){
+		return cards;
+	}
+	
 	public void paintComponent(Graphics g) {
 		drawDeck();
 		drawPot();
+		drawHands();
 		g.drawImage(buffer, 0, 0, width, height, null);
 	}
 	
