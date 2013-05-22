@@ -4,19 +4,20 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 import com.abauer.GuardGame.game.Game;
+import com.abauer.GuardGame.turn.TurnManager;
 
 public class GameWindow extends BaseWindow implements ComponentListener{
 	private static final long serialVersionUID = 1L;
 	Game contained;
-	public GameWindow(Game g){
+	public GameWindow(TurnManager tm){
 		super(800,600);
-		contained = g;
+		contained = tm.getGame();
 		myHandler.registerWhiteList(this);
 		addComponentListener(this);
 		setResizable(true);
-		g.setLocation(0,0);
-		g.onResize(width,height);
-		setContentPane(g);
+		contained.setLocation(0,0);
+		contained.onResize(width,height);
+		setContentPane(contained);
 	}
 	public void componentHidden(ComponentEvent ce) {		
 	}

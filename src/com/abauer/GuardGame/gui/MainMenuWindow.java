@@ -22,8 +22,7 @@ import javax.swing.*;
 import com.abauer.GuardGame.GuardGame;
 import com.abauer.GuardGame.Listeners.WindowCloser;
 import com.abauer.GuardGame.data.Constants;
-import com.abauer.GuardGame.game.DuoGame;
-import com.abauer.GuardGame.turn.TurnManager;
+import com.abauer.GuardGame.turn.*;
 import com.abauer.GuardGame.util.URLUtils;
 
 import java.awt.*;
@@ -130,7 +129,7 @@ public class MainMenuWindow extends BaseWindow {
 		vAI.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new GameWindow(new DuoGame(new TurnManager()));
+				new GameWindow(new TurnManager(new Human(),new AI()));
 				nextWindow("GameWindow");
 			}
 		});
@@ -138,7 +137,7 @@ public class MainMenuWindow extends BaseWindow {
 		v2AI.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new GameWindow(new DuoGame(new TurnManager()));
+				new GameWindow(new TurnManager(new Human(),new AI()));
 				nextWindow("GameWindow");
 			}
 		});
