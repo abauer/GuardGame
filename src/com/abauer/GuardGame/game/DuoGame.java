@@ -20,10 +20,20 @@ public class DuoGame extends Game{
 				shelf[index].drawCard(main, 50+index*50, 100);
 			}
 		}
+		
+		Card[] flop = tm.getP2().getFlop();
+		for(int index=0; index<flop.length; index++){
+			if(flop[index]!=null){
+				flop[index].setVisible(true);
+				flop[index].drawCard(main, 50+index*50, 150);
+			}
+		}
+		
 		ArrayList<Card> hand = tm.getP2().getHand();
 		for(int index=0; index<hand.size(); index++){
 			int spaceing = 300/hand.size();
 			hand.get(index).drawCard(main,400+index*spaceing,100);
 		}
 	}
+	
 }

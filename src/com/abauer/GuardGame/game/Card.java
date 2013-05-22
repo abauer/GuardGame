@@ -17,6 +17,7 @@ public class Card
 	boolean visible;
 	int width = 73;
 	int height = 97;
+	int x,y;
 	
 	public Card()
 	{
@@ -63,6 +64,20 @@ public class Card
 		return cardImage;
 	}
 	
+	public boolean isInside(int x, int y){
+		if(visible){
+			if(x>this.x&&y>this.y)
+				if(x<this.x+width&&y<this.y+height){
+					return true;
+				}
+		}
+		return false;
+	}
+	
+	public boolean equals(Card c){
+		return(c.getCardName().equals(this.getCardName()));
+	}
+	
 	public void setCardNumber(int cN)
 	{
 		cardNumber = cN;
@@ -105,6 +120,8 @@ public class Card
 	public void drawCard(Graphics g,int x, int y){
 		x -= width/2;
 		y -= height/2;
+		this.x = x;
+		this.y = y;
 		if(visible)
 			g.drawImage(cardImage,x,y,null);
 		else

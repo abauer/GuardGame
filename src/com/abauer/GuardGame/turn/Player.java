@@ -1,5 +1,6 @@
 package com.abauer.GuardGame.turn;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import com.abauer.GuardGame.game.Card;
@@ -9,6 +10,7 @@ public class Player {
 	ArrayList<Card> hand;
 	Card shelf[] = new Card[4];
 	Card flop[] = new Card[4];
+	Card[] selected = new Card[4];
 	
 	public Player(){
 		hand = new ArrayList<Card>();
@@ -19,19 +21,40 @@ public class Player {
 	}
 	
 	public void setflop(Card...cards){
+		flop[0]=cards[0];
+		flop[1]=cards[1];
+		flop[2]=cards[2];
+		if(cards.length>3)
+			flop[3]=cards[3];
+	}
+	
+	public void setshelf(Card...cards){
 		shelf[0]=cards[0];
 		shelf[1]=cards[1];
 		shelf[2]=cards[2];
 		if(cards.length>3)
-		shelf[3]=cards[3];
+			shelf[3]=cards[3];
 	}
 	
-//	public void setshelf(Card...cards){
-//		shelf[0]=c1;
-//		shelf[1]=c2;
-//		shelf[2]=c3;
-//		shelf[3]=c4;
-//	}
+	public void sendClick(MouseEvent me){
+		
+	}
+	
+	protected void addSelected(Card c){
+
+	}
+	
+	public boolean isSelected(Card c){
+		return false;
+	}
+	
+	public void takeTurn(int turnnumber){
+		
+	}
+	
+	public boolean finished(int turn){
+		return TurnManager.followsRules(turn,selected);
+	}
 	
 	public Card[] getFlop(){
 		return flop;
@@ -43,6 +66,13 @@ public class Player {
 	
 	public ArrayList<Card> getHand(){
 		return hand;
+	}
+	
+	public void remove(){
+		for(int index = 0; index<selected.length; index++){
+			hand.remove(selected[index]);
+		}
+		selected = new Card[selected.length];
 	}
 	
 }

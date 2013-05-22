@@ -1,18 +1,23 @@
 package com.abauer.GuardGame.turn;
 
+import java.awt.event.MouseEvent;
+
 import com.abauer.GuardGame.game.*;
 
 public class TurnManager {
 	
 	Game g;
-	boolean triple = false;
+	static boolean triple = false;
 	Player p1,p2,p3;
+	Player turn;
+	int turnnumber = 1;
 	
 	public TurnManager(Player p1,Player p2){
 		g = new DuoGame(this);
 		this.p1 = p1;
 		this.p2 = p2;
 		dealCards();
+		turn = p1;
 	}
 	public TurnManager(Player p1,Player p2,Player p3){
 		g = new TriGame(this);
@@ -21,21 +26,21 @@ public class TurnManager {
 		this.p2 = p2;
 		this.p3 = p3;
 		dealCards();
+		turn = p1;
 	}
 	
 	private void dealCards(){
-		System.out.println("Here once");
 		Deck d = g.getDeck();
 		Card c;
 		int loop = 4;
 		if(!triple){
-			p1.setflop(d.pop(), d.pop(), d.pop(), d.pop());
-			p2.setflop(d.pop(), d.pop(), d.pop(), d.pop());
+			p1.setshelf(d.pop(), d.pop(), d.pop(), d.pop());
+			p2.setshelf(d.pop(), d.pop(), d.pop(), d.pop());
 		}
 		else{
-			p1.setflop(d.pop(), d.pop(), d.pop());
-			p2.setflop(d.pop(), d.pop(), d.pop());
-			p3.setflop(d.pop(), d.pop(), d.pop());
+			p1.setshelf(d.pop(), d.pop(), d.pop());
+			p2.setshelf(d.pop(), d.pop(), d.pop());
+			p3.setshelf(d.pop(), d.pop(), d.pop());
 		}
 		loop = 8;
 		if(triple)
@@ -57,6 +62,30 @@ public class TurnManager {
 		}
 	}
 	
+	public void play(){
+		if(turn.finished(turnnumber)){
+			moveCards();
+			prepareNextTurn();
+		}
+	}
+	
+	private void prepareNextTurn(){
+		if(turn.equals(p1))
+			turn = p2;
+		else if(turn.equals(p2))
+			if(triple)
+				turn = p3;
+			else{
+				turn = p1;
+				turnnumber++;
+			}
+		else{
+			turn = p1;
+			turnnumber++;
+		}
+		turn.takeTurn(turnnumber);
+	}
+	
 	public Game getGame(){
 		return g;
 	}
@@ -67,5 +96,30 @@ public class TurnManager {
 	
 	public Player getP2(){
 		return p2;
+	}
+	
+	public void sendClick(MouseEvent me){
+		if(turn instanceof Human){
+			turn.sendClick(me);
+		}
+	}
+	
+	private void moveCards(){
+		if(turnnumber == 1){
+			turn.setflop(turn.selected);
+			turn.remove();
+		}
+	}
+	
+	public static boolean followsRules(int turn, Card[] selected){
+		if(turn==1){
+			for(int index=0;index<selected.length;index++)
+				if(selected[index]==null)
+					if(index!=3)
+						return false;
+					else if(!triple)
+						return false;
+		}
+		return true;
 	}
 }

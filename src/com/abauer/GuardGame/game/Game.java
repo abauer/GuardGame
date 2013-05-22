@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import com.abauer.GuardGame.turn.TurnManager;
@@ -20,6 +21,8 @@ public class Game extends JComponent implements MouseListener{
 	TurnManager tm;
 	private int seed;
 	Deck cards;
+	static Image board = FileUtils.getImage("tabletexture.jpg");
+	JButton play;
 	
 	public Game(TurnManager tm){
 		this.tm = tm;
@@ -37,10 +40,18 @@ public class Game extends JComponent implements MouseListener{
 		addMouseListener(this);
 		buffer = new BufferedImage(800,600,BufferedImage.TYPE_4BYTE_ABGR);
 		main = buffer.getGraphics();
-		Image board = FileUtils.getImage("tabletexture.jpg");
-		main.drawImage(board,0, 0, 800, 600, null);
 		cards = new Deck(seed);
 		pot = new ArrayList<Card>();
+		play = new JButton("Play");
+		play.setBounds(355,285,90,30);
+		add(play);
+		play.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tm.play();	
+				repaint();
+			}
+		});
 	}
 	
 	protected void drawDeck(){
@@ -71,10 +82,22 @@ public class Game extends JComponent implements MouseListener{
 				shelf[index].drawCard(main, 50+index*50, 500);
 			}
 		}
+		
+		Card[] flop = tm.getP1().getFlop();
+		for(int index=0; index<flop.length; index++){
+			if(flop[index]!=null){
+				flop[index].setVisible(true);
+				flop[index].drawCard(main, 50+index*50, 450);
+			}
+		}
+		
 		ArrayList<Card> hand = tm.getP1().getHand();
 		for(int index=0; index<hand.size(); index++){
 			int spaceing = 300/hand.size();
-			hand.get(index).drawCard(main,400+index*spaceing,500);
+			if(!tm.getP1().isSelected(hand.get(index)))
+				hand.get(index).drawCard(main,400+index*spaceing,500);
+			else
+				hand.get(index).drawCard(main,400+index*spaceing,450);
 		}
 	}
 	
@@ -83,6 +106,7 @@ public class Game extends JComponent implements MouseListener{
 	}
 	
 	public void paintComponent(Graphics g) {
+		main.drawImage(board,0, 0, 800, 600, null);
 		drawDeck();
 		drawPot();
 		drawHands();
@@ -103,6 +127,8 @@ public class Game extends JComponent implements MouseListener{
 	public void mousePressed(MouseEvent arg0) {
 	}
 	public void mouseReleased(MouseEvent arg0) {
+		tm.sendClick(arg0);
+		repaint();
 	}
 	
 }

@@ -14,7 +14,6 @@ public class GameWindow extends BaseWindow implements ComponentListener{
 		contained = tm.getGame();
 		myHandler.registerWhiteList(this);
 		addComponentListener(this);
-		setResizable(true);
 		contained.setLocation(0,0);
 		contained.onResize(width,height);
 		setContentPane(contained);
