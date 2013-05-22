@@ -109,10 +109,17 @@ public class TurnManager {
 			turn.setflop(turn.selected);
 			turn.remove();
 		}
+		else{
+			g.playCards(turn.selected);
+			turn.remove();
+			turn.draw(g.getDeck());
+		}
 	}
 	
 	public static boolean followsRules(int turn, Card[] selected){
+		boolean flag = false;
 		if(turn==1){
+			flag = true;
 			for(int index=0;index<selected.length;index++)
 				if(selected[index]==null)
 					if(index!=3)
@@ -120,6 +127,18 @@ public class TurnManager {
 					else if(!triple)
 						return false;
 		}
-		return true;
+		else{
+			for(int index=0;index<selected.length;index++){
+				for(int count=1+index;count<selected.length;count++){
+					if(selected[index]!=null){
+						flag = true;
+						if(selected[count]!=null)
+							if(selected[index].getCardNumber()!=selected[count].getCardNumber())
+								return false;
+					}
+				}
+			}
+		}
+		return flag;
 	}
 }
