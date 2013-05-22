@@ -70,6 +70,9 @@ public class TurnManager {
 		if(turn.finished(turnnumber)){
 			moveCards();
 			prepareNextTurn();
+			g.paintImmediately(0, 0, 800, 600);
+			delay(500);
+			turn.takeTurn(turnnumber);
 		}
 	}
 	
@@ -143,5 +146,11 @@ public class TurnManager {
 			}
 		}
 		return flag;
+	}
+	
+	protected void delay(int time){
+		try{
+			Thread.sleep(time);
+		} catch(Exception e) {}
 	}
 }

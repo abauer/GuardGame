@@ -41,10 +41,6 @@ public class Player {
 		
 	}
 	
-	protected void addSelected(Card c){
-
-	}
-	
 	public void takeTurn(int turn){
 		
 	}
@@ -82,11 +78,5 @@ public class Player {
 			hand.remove(selected[index]);
 		}
 		selected = new Card[selected.length];
-	}
-	
-	protected void delay(int time){
-		try{
-			Thread.sleep(time);
-		} catch(Exception e) {}
 	}
 }
