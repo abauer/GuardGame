@@ -51,6 +51,10 @@ public class Game extends JComponent implements MouseListener{
 		}
 	}
 	
+	public void dealCards(){
+		
+	}
+	
 	protected void drawPot(){
 		if(pot.size()>0){
 			pot.get(0).setVisible(true);

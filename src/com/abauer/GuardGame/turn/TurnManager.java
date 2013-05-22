@@ -11,6 +11,7 @@ public class TurnManager {
 			g = new TriGame(this);
 		else
 			g = new DuoGame(this);
+		g.dealCards();
 	}
 	
 	public Game getGame(){
