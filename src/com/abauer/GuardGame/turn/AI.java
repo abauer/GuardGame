@@ -1,5 +1,8 @@
 package com.abauer.GuardGame.turn;
 
+import com.abauer.GuardGame.game.Card;
+import com.abauer.GuardGame.game.Deck;
+
 public class AI extends Player{
 	
 	boolean done = false;
@@ -17,7 +20,17 @@ public class AI extends Player{
 				selected[index] = hand.get(index);
 			}				
 		}
+		else{
+			selected[0] = hand.get(0);
+		}
 		done = true;
+	}
+	
+	public void draw(Deck d){
+		while(hand.size()<4&&d.hasCard()){
+			Card c = d.pop();
+			hand.add(c);
+		}
 	}
 	
 	public boolean finished(int turn){

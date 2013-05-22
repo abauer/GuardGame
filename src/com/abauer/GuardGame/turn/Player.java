@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import com.abauer.GuardGame.game.Card;
+import com.abauer.GuardGame.game.Deck;
 
 public class Player {
 	
@@ -50,6 +51,14 @@ public class Player {
 	
 	public void takeTurn(int turnnumber){
 		
+	}
+	
+	public void draw(Deck d){
+		while(hand.size()<4&&d.hasCard()){
+			Card c = d.pop();
+			c.setVisible(true);
+			hand.add(c);
+		}
 	}
 	
 	public boolean finished(int turn){

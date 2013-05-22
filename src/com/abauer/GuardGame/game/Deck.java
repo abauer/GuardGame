@@ -36,6 +36,10 @@ public class Deck {
 		return cards.remove(0);
 	}
 	
+	public boolean hasCard(){
+		return cards.size()>0;
+	}
+	
 	private int getInteger(int min, int max){
 		int flag = 
 		r.nextInt(max-min+1)+min;

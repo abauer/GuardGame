@@ -64,14 +64,23 @@ public class Game extends JComponent implements MouseListener{
 	
 	protected void drawPot(){
 		if(pot.size()>0){
-			pot.get(0).setVisible(true);
-			pot.get(0).drawCard(main, 256, 300);
-			for(int index=1;index<pot.size();index++){
-				if(pot.get(index-1).getCardNumber()==pot.get(index).getCardNumber()){
-					pot.get(index).setVisible(true);
-					pot.get(index).drawCard(main, 256+20*index, 300);
+			pot.get(pot.size()-1).setVisible(true);
+			pot.get(pot.size()-1).drawCard(main, 256, 300);
+			for(int index=pot.size()-1;index>0;index--){
+				if(pot.get(index-1).getCardNumber()==pot.get(pot.size()-1).getCardNumber()){
+					pot.get(index-1).setVisible(true);
+					pot.get(index-1).drawCard(main, 256+20*Math.abs(pot.size()-index), 300);
 				}
+				else
+					break;
 			}
+		}
+	}
+	
+	public void playCards(Card[] cards){
+		for(int index = 0; index<cards.length; index++){
+			if(cards[index]!=null)
+				pot.add(cards[index]);
 		}
 	}
 	
