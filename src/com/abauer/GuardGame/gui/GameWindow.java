@@ -8,7 +8,7 @@ import com.abauer.GuardGame.turn.TurnManager;
 
 public class GameWindow extends BaseWindow implements ComponentListener{
 	private static final long serialVersionUID = 1L;
-	Game contained;
+	public static Game contained;
 	public GameWindow(TurnManager tm){
 		super(800,600);
 		contained = tm.getGame();

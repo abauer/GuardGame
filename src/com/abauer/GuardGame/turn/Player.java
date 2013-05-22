@@ -50,7 +50,6 @@ public class Player {
 	}
 	
 	public void takeTurn(int turnnumber){
-		
 	}
 	
 	public void draw(Deck d){
@@ -84,4 +83,9 @@ public class Player {
 		selected = new Card[selected.length];
 	}
 	
+	private void delay(int time){
+		long start = System.currentTimeMillis();
+		while(start+time>System.currentTimeMillis())
+			;
+	}
 }

@@ -2,6 +2,7 @@ package com.abauer.GuardGame.turn;
 
 import com.abauer.GuardGame.game.Card;
 import com.abauer.GuardGame.game.Deck;
+import com.abauer.GuardGame.gui.GameWindow;
 
 public class AI extends Player{
 	
@@ -24,6 +25,7 @@ public class AI extends Player{
 			selected[0] = hand.get(0);
 		}
 		done = true;
+		GameWindow.contained.tm.play();
 	}
 	
 	public void draw(Deck d){
@@ -35,6 +37,5 @@ public class AI extends Player{
 	
 	public boolean finished(int turn){
 		return (done&&TurnManager.followsRules(turn,selected));
-	}
-	
+	}	
 }

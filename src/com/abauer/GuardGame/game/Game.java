@@ -18,7 +18,7 @@ public class Game extends JComponent implements MouseListener{
 	BufferedImage buffer;
 	Graphics main;
 	int width,height;
-	TurnManager tm;
+	public TurnManager tm;
 	private int seed;
 	Deck cards;
 	static Image board = FileUtils.getImage("tabletexture.jpg");
@@ -48,8 +48,7 @@ public class Game extends JComponent implements MouseListener{
 		play.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				tm.play();	
-				repaint();
+				tm.play();
 			}
 		});
 	}

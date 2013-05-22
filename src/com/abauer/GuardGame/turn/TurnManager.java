@@ -65,6 +65,7 @@ public class TurnManager {
 	public void play(){
 		if(turn.finished(turnnumber)){
 			moveCards();
+			g.repaint();
 			prepareNextTurn();
 		}
 	}
