@@ -49,6 +49,7 @@ public class Game extends JComponent implements MouseListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tm.play();
+				repaint();
 			}
 		});
 	}
@@ -119,6 +120,7 @@ public class Game extends JComponent implements MouseListener{
 		drawPot();
 		drawHands();
 		g.drawImage(buffer, 0, 0, width, height, null);
+		tm.takeTurn();
 	}
 	
 	public void onResize(int width,int height){

@@ -13,6 +13,7 @@ public class AI extends Player{
 	}
 	
 	public void takeTurn(int turn){
+		delay(1000);
 		for(int index = 0; index<hand.size(); index++){
 			hand.get(index).setVisible(false);
 		}
@@ -26,6 +27,7 @@ public class AI extends Player{
 		}
 		done = true;
 		GameWindow.contained.tm.play();
+		GameWindow.contained.repaint();
 	}
 	
 	public void draw(Deck d){

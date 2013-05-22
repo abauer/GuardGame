@@ -19,7 +19,7 @@ public class Human extends Player{
 		}
 	}
 	
-	protected void toggleSelected(Card c){
+	private void toggleSelected(Card c){
 		for(int index = 0; index<selected.length; index++){
 			if(selected[index]!=null){
 				if(selected[index].equals(c)){

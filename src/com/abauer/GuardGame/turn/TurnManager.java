@@ -62,10 +62,13 @@ public class TurnManager {
 		}
 	}
 	
+	public void takeTurn(){
+		turn.takeTurn(turnnumber);
+	}
+	
 	public void play(){
 		if(turn.finished(turnnumber)){
 			moveCards();
-			g.repaint();
 			prepareNextTurn();
 		}
 	}
@@ -84,7 +87,6 @@ public class TurnManager {
 			turn = p1;
 			turnnumber++;
 		}
-		turn.takeTurn(turnnumber);
 	}
 	
 	public Game getGame(){

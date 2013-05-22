@@ -45,11 +45,12 @@ public class Player {
 
 	}
 	
-	public boolean isSelected(Card c){
-		return false;
+	public void takeTurn(int turn){
+		
 	}
 	
-	public void takeTurn(int turnnumber){
+	public boolean isSelected(Card c){
+		return false;
 	}
 	
 	public void draw(Deck d){
@@ -83,9 +84,9 @@ public class Player {
 		selected = new Card[selected.length];
 	}
 	
-	private void delay(int time){
-		long start = System.currentTimeMillis();
-		while(start+time>System.currentTimeMillis())
-			;
+	protected void delay(int time){
+		try{
+			Thread.sleep(time);
+		} catch(Exception e) {}
 	}
 }
