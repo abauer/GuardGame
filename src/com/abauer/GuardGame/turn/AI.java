@@ -13,7 +13,7 @@ public class AI extends Player{
 	}
 	
 	public void takeTurn(int turn){
-		delay(1000);
+//		delay(1000);
 		for(int index = 0; index<hand.size(); index++){
 			hand.get(index).setVisible(false);
 		}
